@@ -6,14 +6,14 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
     {
-        name: 'HomeComponent',
-        component: HomeComponent,
-        path: '/'
-    },
-    {
         name: 'SignUp',
         component: SignUp,
-        path: '/sign-up'
+        path: '/',
+    },
+    {
+        name: 'HomeComponent',
+        component: HomeComponent,
+        path: '/home',
     },
     {
         name: 'LoginPage',

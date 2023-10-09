@@ -5,7 +5,7 @@
         <input type="password" placeholder="Enter Password" />
         <button v-on:click="toggleLogin">Log In</button>
         <p>
-            <RouterLink to="/sign-up">Sign Up</RouterLink>
+            <RouterLink to="/">Sign Up</RouterLink>
         </p>
     </div>
 </template>
@@ -16,8 +16,15 @@ export default {
     methods: {
     toggleLogin() {
       // Dispatch the setLoggedIn mutation to toggle the state
-      this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
-      this.$router.push({name: 'HomeComponent'})
+      console.log(this.$store.isLoggedIn);
+      if(!this.$store.isLoggedIn) {
+          this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
+          this.$router.push({name: 'HomeComponent'});
+      }
+
+      else {
+        this.$router.push({name: 'LoginPage'});
+      }
     },
   },
 }

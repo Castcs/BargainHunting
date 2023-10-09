@@ -1,8 +1,9 @@
 <template>
     <div class="navbar">
         <ul>
-        <li><router-link v-if="isLoggedIn" to="/">Home</router-link></li>
-        <li><router-link to="/sign-up">Sign Up</router-link></li>
+        <li><router-link v-if="isLoggedIn" to="/home">Home</router-link></li>
+        <li><router-link v-if="notIsLoggedIn" to="/">Sign Up</router-link></li>
+        <li><RouterLink v-if="isLoggedIn" @click="signOut" to="/">Sign Out</RouterLink></li>
         </ul>
     </div>
 </template>
@@ -13,7 +14,17 @@ export default {
     isLoggedIn() {
       return this.$store.state.isLoggedIn;
     },
+    notIsLoggedIn() {
+        return !this.$store.state.isLoggedIn;
+    }
   },
+
+  methods: {
+    signOut() {
+        this.$store.commit('setLoggedIn', false);
+        this.$router.push('/log-in');
+    }
+  }
 }
 </script>
 
