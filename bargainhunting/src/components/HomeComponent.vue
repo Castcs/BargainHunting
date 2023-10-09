@@ -3,6 +3,7 @@
         <SearchResult />
         <SearchResult />
         <SearchResult />
+        <SearchResult />
     </div>
 </template>
 
@@ -19,7 +20,10 @@ export default {
 <style>
     .contentArea {
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: center;
+        width: auto;
+        overflow:visible;
     }
 </style>

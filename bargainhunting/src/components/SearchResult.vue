@@ -20,12 +20,12 @@ export default {
 <style>
     .box {
         height: 300px;
-        width: 500px;
-        margin-bottom: 25px;
-        margin-top: 25px;
+        min-width: 500px;
+        margin: 25px;
         border: 2px solid black;
+        border-radius: 10%;
         display: block;
-        align-self: center;
+        /* align-items: center; */
         place-content: center;
     }
 

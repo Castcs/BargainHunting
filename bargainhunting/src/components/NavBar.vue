@@ -1,9 +1,9 @@
 <template>
     <div class="navbar">
         <ul>
-        <li><router-link v-if="isLoggedIn" to="/home">Home</router-link></li>
-        <li><router-link v-if="notIsLoggedIn" to="/">Sign Up</router-link></li>
-        <li><RouterLink v-if="isLoggedIn" @click="signOut" to="/">Sign Out</RouterLink></li>
+            <li><router-link v-if="isLoggedIn" to="/home">Home</router-link></li>
+            <li><router-link v-if="notIsLoggedIn" to="/">Sign Up</router-link></li>
+            <li><RouterLink v-if="isLoggedIn" @click="signOut" to="/">Sign Out</RouterLink></li>
         </ul>
     </div>
 </template>
@@ -33,6 +33,8 @@ export default {
 .navbar {
     background-color: #333;
     padding: 15px;
+    margin-top: -10px;
+    width: 100%;
 }
 
 ul {
