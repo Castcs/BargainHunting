@@ -1,21 +1,25 @@
 <template>
-    <h1>SignUp</h1>
+    <h1>Log In</h1>
     <div class="register">
-        <input type="text" placeholder="Enter Name" />
         <input type="text" placeholder="Enter Email" />
         <input type="password" placeholder="Enter Password" />
-        <button>Sign Up</button>
+        <button v-on:click="toggleLogin">Log In</button>
         <p>
-            <router-link to="/log-in">Log In</router-link>
+            <RouterLink to="/sign-up">Sign Up</RouterLink>
         </p>
-
     </div>
-
 </template>
 
 <script>
 export default {
-    name : 'SignUp'
+    name: 'LoginPage',
+    methods: {
+    toggleLogin() {
+      // Dispatch the setLoggedIn mutation to toggle the state
+      this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
+      this.$router.push({name: 'HomeComponent'})
+    },
+  },
 }
 </script>
 
