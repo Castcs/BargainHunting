@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style>
+h1 {
+    margin-top: 50px;
+}
 .register input {
     width: 300px;
     height: 40px;
