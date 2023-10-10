@@ -5,7 +5,7 @@
         <input type="password" placeholder="Enter Password" />
         <button v-on:click="toggleLogin">Log In</button>
         <p>
-            <RouterLink to="/">Sign Up</RouterLink>
+            <RouterLink to="/sign-up">Sign Up</RouterLink>
         </p>
     </div>
 </template>
