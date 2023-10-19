@@ -4,7 +4,11 @@
     --dark-yellow: #FFBE00;
     --light-gray: #414042;
     --dark-gray: #231F20;
-  }
+
+    /* other colors */
+    --gray-blue: #2c3e50;
+    --navbar-color: #333;
+}
 
 h1 {
     justify-content: center;
@@ -64,7 +68,7 @@ a:visited{
     min-height: 300px;
     min-width: 500px;
     margin: 25px;
-    border: 2px solid black;
+    border: 2px solid var(--dark-gray);
     border-radius: 10%;
     display: inline;
     /* align-items: center; */
@@ -87,7 +91,7 @@ a:visited{
 }
 
 .navbar {
-    background-color: #333;
+    background-color: var(--navbar-color);
     padding: 20px;
     margin-bottom: 20px;
     width: 99%;
@@ -146,7 +150,7 @@ a:visited{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
-    color: #2c3e50;
+    color: var(--gray-blue);
     width: 100%;
     overflow-x: hidden;
     margin-top: 60px;
