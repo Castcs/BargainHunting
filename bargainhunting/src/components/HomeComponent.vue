@@ -38,23 +38,6 @@ export default {
 }
 </script>
 
-<style scoped>
-    .parent-container {
-        display: flex;
-        flex-wrap: wrap; /* Allow components to wrap to the next line */
-        align-items: center;
-        gap: 10px;
-    }
-
-    .AddButton {
-        position: fixed;
-        top:85%;
-        left: 90%;
-        height: 75px;
-        width: 75px;
-        background-color: skyblue;
-        border: solid 1px darkblue;
-        font-size: 20px;
-
-    }
+<style>
+  @import '../public/style.css';
 </style>

@@ -33,47 +33,11 @@ export default {
 </script>
 
 <style scoped>
-/* Add some basic styling for the navbar */
-.navbar {
-    background-color: #333;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 99%;
-    position: fixed;
-    /* display: flex; */
-    top: 0;
-    left: 0;
-    z-index: 1000;
-}
+    @import '../public/style.css';
 
-img {
-    position:fixed;
-    top:3px;
-    left: 0px;
-}
-
-h3 {
-    position: fixed;
-    top: 0px;
-    left: 75px;
-    color: white;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    text-align: right;
-}
-
-li {
-    display: inline;
-    margin-right: 20px;
-}
-
-a {
-    color: white;
-    text-decoration: none;
-}
+    img {
+        position:fixed;
+        top:3px;
+        left: 0px;
+    }
 </style>

@@ -12,25 +12,12 @@ export default {
 </script>
 
 <style>
-
-    .container {
-        text-align: center;
-        justify-content: center;
-        width: 100%;
-        display: flex;
-        /* border: solid 1px green; */
-    }
+    @import '../public/style.css';
 
     img {
         width: 50px;
         height: 50px;
         /* border: solid 2px blue; */
         position:absolute;
-    }
-
-    h1 {
-        justify-content: center;
-        vertical-align: center;
-        /* border: solid 2px red; */
     }
 </style>
