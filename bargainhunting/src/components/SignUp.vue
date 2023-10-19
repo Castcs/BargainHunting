@@ -32,7 +32,3 @@ export default {
   },
 }
 </script>
-
-<style>
-  @import '../public/style.css';
-</style>

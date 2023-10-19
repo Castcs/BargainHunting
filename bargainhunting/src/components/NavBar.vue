@@ -33,7 +33,6 @@ export default {
 </script>
 
 <style scoped>
-    @import '../public/style.css';
 
     img {
         position:fixed;

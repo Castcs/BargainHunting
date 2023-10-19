@@ -12,8 +12,7 @@ export default {
 </script>
 
 <style>
-    @import '../public/style.css';
-
+   
     img {
         width: 50px;
         height: 50px;
