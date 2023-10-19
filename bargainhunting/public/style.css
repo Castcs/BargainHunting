@@ -91,7 +91,7 @@ a:visited{
 }
 
 .navbar {
-    background-color: var(--navbar-color);
+    background-color: var(--gray-blue);
     padding: 20px;
     margin-bottom: 20px;
     width: 99%;
