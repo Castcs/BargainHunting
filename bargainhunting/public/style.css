@@ -27,8 +27,17 @@ li {
 }
 
 a {
-    color: white;
+    color: darkblue;
+    text-decoration: underline;
+}
+
+a:hover{
     text-decoration: none;
+    cursor: pointer;
+}
+
+a:visited{
+    color: skyblue;
 }
 
 .AddButton {
