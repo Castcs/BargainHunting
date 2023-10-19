@@ -1,3 +1,14 @@
+/*
+colors from logo
+*/
+
+:root {
+    --light-yellow: #FFF200;
+    --dark-yellow: #FFBE00;
+    --light-gray: #414042;
+    --dark-gray: #231F20;
+  }
+
 h1 {
     justify-content: center;
     vertical-align: center;
