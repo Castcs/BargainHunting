@@ -7,13 +7,15 @@
 
     /* other colors */
     --gray-blue: #2c3e50;
-    --navbar-color: #333;
+}
+
+*{
+    font-family: 'Monaco', monospace;
 }
 
 h1 {
     justify-content: center;
     vertical-align: center;
-    /* border: solid 2px red; */
     margin-top: 50px;
 
 }
@@ -23,6 +25,11 @@ h3 {
     top: 0px;
     left: 75px;
     color: white;
+}
+
+h4 {
+    justify-content: center;
+    vertical-align: center;
 }
 
 ul {
@@ -81,7 +88,7 @@ a:visited{
     text-align: center;
     justify-content: center;
     width: 100%;
-    display: flex;
+    /* display: flex; */
     /* border: solid 1px green; */
 }
 

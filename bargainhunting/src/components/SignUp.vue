@@ -1,5 +1,5 @@
 <template>
-    <h1>SignUp</h1>
+    <h1>Sign Up</h1>
     <div class="register">
         <input type="text" placeholder="Enter Name" />
         <input type="text" placeholder="Enter Email" />
