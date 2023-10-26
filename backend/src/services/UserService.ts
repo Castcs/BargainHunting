@@ -10,7 +10,7 @@ class UserService {
 
     public async createUser(user: User): Promise<User | null> {
         const existingUser = await this.getUserByUsername(user.username);
-        if (existingUser) return null;
+        if (!existingUser) return null;
         return await User.createUser(user.username, user.email, user.password); // Implementation to create a user in the database
     }
 
