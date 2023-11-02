@@ -1,8 +1,8 @@
 <template>
     <div class="navbar">
-      <h3 id="brand">BargainHunting</h3>
 
-      <!-- <img :src="require('@/assets/BHLogo.png')" alt="logo"/> -->
+      <img :src="require('@/assets/BHLogo.png')" alt="logo"/>
+      <h3>BargainHunting</h3>
   
       <div 
         class="search-bar"

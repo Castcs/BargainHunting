@@ -44,7 +44,7 @@ h1 {
 
 h3 {
     position: relative;
-    margin-left: 20px;
+    margin-left: 60px;
     color: white;
 }
 
@@ -103,6 +103,7 @@ a:visited{
     place-content: center;
     position: relative;
     background-color: white;
+    margin-top: 40px;
 }
 
 .container {
