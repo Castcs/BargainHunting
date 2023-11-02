@@ -2,7 +2,7 @@
     <div class="box">
         <button class="removeResult" @click="removeComponent">X</button>
         <div class="title">
-            <h3>{{title}}</h3>
+            <p>{{title}}</p>
         </div>
         <br>
         <div class="details">
