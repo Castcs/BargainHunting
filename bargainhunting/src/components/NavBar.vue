@@ -4,13 +4,16 @@
 
       <!-- <img :src="require('@/assets/BHLogo.png')" alt="logo"/> -->
   
-      <div class="search-bar">
+      <div 
+        class="search-bar"
+        v-if="isLoggedIn"
+        >
         <input
           v-model="searchQuery"
           type="text"
-          placeholder="Search..."
+          placeholder="Look For Items..."
         />
-        <button @click="search">Search</button>
+        <button class="search-button" @click="search">Search</button>
       </div>
   
       <ul>

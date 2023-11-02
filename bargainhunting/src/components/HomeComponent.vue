@@ -7,7 +7,6 @@
              :price="component.price"/>
         <!-- </div> -->
     </div>
-    <button class="AddButton" @click="addComponent">Add</button>
 </template>
 
 <script>
@@ -25,10 +24,6 @@ export default {
         };
     },
     methods: {
-        addComponent() {
-            // Push a new instance of MyComponent to the components array
-            this.components.push(SearchResult);
-        },
         removeComponent(index) {
         // Remove the component at the specified index
             this.components.splice(index, 1);

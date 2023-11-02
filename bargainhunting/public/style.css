@@ -16,11 +16,24 @@
 .search-bar {
     display: flex;
     align-items: center;
-  }
+}
   
 .search-bar input {
    margin-right: 10px;
    align-items: center;
+   border: 2px solid var(--dark-yellow);
+   border-radius: 4px;
+   height: 30px;
+   background-color: var(--gray-blue);
+   padding-left: 5px;
+}
+
+.search-button{
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid var(--dark-yellow);
+    background-color: var(--dark-yellow);
+    cursor: pointer;
 }
 
 h1 {
@@ -134,10 +147,11 @@ img {
 .register button {
     width: 320px;
     height: 40px;
-    border: 1px solid skyblue;
+    border: 3px solid skyblue;
     background-color: skyblue;
     color: white;
     cursor: pointer;
+    border-radius: 4px;
 }
 
 .register input {
@@ -148,7 +162,8 @@ img {
     margin-bottom: 30px;
     margin-right: auto;
     margin-left: auto;
-    border: 1px solid skyblue;
+    border: 3px solid skyblue;
+    border-radius: 4px;
 
 }
 
