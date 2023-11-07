@@ -8,8 +8,12 @@ const userController = container.resolve(UserController);
 const searchController = container.resolve(SearchController);
 
 // Define your routes
-router.get('/users/:id', userController.getUser);
-router.post('/users', userController.createUser);
+router.get('/findUser/:username', userController.getUserByUsername);
+router.post('/register', userController.createUser);
 router.post('/search', searchController.performSearch);
+router.post('/login', userController.login);
+router.post('/logout', userController.logout)
+router.post('/getHistory', searchController.getSearchResultsByUserID);
+
 
 export default router;

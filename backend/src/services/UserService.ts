@@ -14,6 +14,19 @@ class UserService {
         return await User.createUser(user.username, user.email, user.password); // Implementation to create a user in the database
     }
 
+    public async authenticate(username: string, password: string): Promise<User | null> {
+        const user = await User.getUserByUsername(username);
+
+        if (!user) {
+            return null; // User not found
+        }
+
+        if (user.password !== password) {
+            return null; // Invalid password
+        }
+
+        return user; // User authenticated
+    }
     // Add other methods for user-related operations
 }
 
