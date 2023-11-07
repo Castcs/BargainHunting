@@ -18,7 +18,7 @@ export class SearchController {
         res.status(200).json(results);
     }
 
-    public async requestSearchHistory(userID: number) {
-
+    public async getSearchResultsByUserID(userID: number) {
+        return await this.searchService.getSearchResultsByUserID(userID);
     }
 }

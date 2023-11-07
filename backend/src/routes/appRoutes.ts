@@ -13,5 +13,7 @@ router.post('/register', userController.createUser);
 router.post('/search', searchController.performSearch);
 router.post('/login', userController.login);
 router.post('/logout', userController.logout)
+router.post('/getHistory', searchController.getSearchResultsByUserID);
+
 
 export default router;
