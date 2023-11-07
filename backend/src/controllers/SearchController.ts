@@ -18,7 +18,9 @@ export class SearchController {
         res.status(200).json(results);
     }
 
-    public async getSearchResultsByUserID(userID: number) {
-        return await this.searchService.getSearchResultsByUserID(userID);
+    public async getSearchResultsByUserID(req: Request, res: Response): Promise<void>  {
+        const { userID } = req.body; // Extract search query from request
+        const results = await this.searchService.getSearchResultsByUserID(userID);
+        res.status(200).json(results);
     }
 }
