@@ -1,7 +1,8 @@
 <template>
     <div class="container">
-        <!-- <img :src="require('@/assets/BHLogo.png')" alt="Example Image" /> -->
-        <h1>Welcome to BargainHunting. Please Sign-up/Log-in to continue.</h1>
+        <!-- <img :src="require('@/assets/BHLogo.png')" alt="Logo Image" /> -->
+        <h1>Welcome to BargainHunting</h1>
+        <h4>Please Sign Up or Log In to continue.</h4>
     </div>
 </template>
 
@@ -12,25 +13,10 @@ export default {
 </script>
 
 <style>
-
-    .container {
-        text-align: center;
-        justify-content: center;
-        width: 100%;
-        display: flex;
-        /* border: solid 1px green; */
-    }
-
+   
     img {
         width: 50px;
         height: 50px;
-        /* border: solid 2px blue; */
         position:absolute;
-    }
-
-    h1 {
-        justify-content: center;
-        vertical-align: center;
-        /* border: solid 2px red; */
     }
 </style>

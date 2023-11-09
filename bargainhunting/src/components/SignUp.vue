@@ -1,5 +1,5 @@
 <template>
-    <h1>SignUp</h1>
+    <h1>Sign Up</h1>
     <div class="register">
         <input type="text" placeholder="Enter Name" />
         <input type="text" placeholder="Enter Email" />
@@ -50,29 +50,3 @@ export default {
   },
 }
 </script>
-
-<style>
-h1 {
-    margin-top: 50px;
-}
-.register input {
-    width: 300px;
-    height: 40px;
-    padding-left: 20px;
-    display: block;
-    margin-bottom: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid skyblue;
-
-}
-
-.register button {
-    width: 320px;
-    height: 40px;
-    border: 1px solid skyblue;
-    background-color: skyblue;
-    color: white;
-    cursor: pointer;
-}
-</style>

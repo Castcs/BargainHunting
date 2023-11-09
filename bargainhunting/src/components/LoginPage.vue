@@ -29,26 +29,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.register input {
-    width: 300px;
-    height: 40px;
-    padding-left: 20px;
-    display: block;
-    margin-bottom: 30px;
-    margin-right: auto;
-    margin-left: auto;
-    border: 1px solid skyblue;
-
-}
-
-.register button {
-    width: 320px;
-    height: 40px;
-    border: 1px solid skyblue;
-    background-color: skyblue;
-    color: white;
-    cursor: pointer;
-}
-</style>
