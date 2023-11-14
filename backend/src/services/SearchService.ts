@@ -5,7 +5,9 @@ import {SearchResult} from "../models/SearchResult";
 class SearchService {
     public async createSearchEntry(userID: number, userQuery: string): Promise<SearchResult> {
         // Insert search functionality here
-
+        const resultName = 'short description of the product';
+        const resultURL = 'URL link for the product';
+        const resultPrice = 'price : $1.99';
         // Then pass the pieces of the search result into the following method to store it in the DB and return a SearchResult object
         try {
             return await SearchResult.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
