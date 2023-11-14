@@ -46,17 +46,3 @@ export default {
 };
 </script>
 
-<style>
-/* Add any additional styles for your table here */
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.table th,
-.table td {
-  padding: 8px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-</style>
-

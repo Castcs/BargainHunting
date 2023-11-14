@@ -17,8 +17,6 @@
       </div>
   
       <ul>
-        <link rel="icon" href="../../public/BHLogo.png">
-        <!-- <li><RouterLink v-if="isLoggedIn" to="/home">Home</RouterLink></li> -->
         <li><RouterLink v-if="notIsLoggedIn" to="/sign-up">Sign Up</RouterLink></li>
         <li><RouterLink v-if="notIsLoggedIn" to="/log-in">Log In</RouterLink></li>
         <li><RouterLink v-if="isLoggedIn" @click="signOut" to="/">Sign Out</RouterLink></li>
