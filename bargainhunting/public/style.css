@@ -7,6 +7,7 @@
 
     /* other colors */
     --gray-blue: #2c3e50;
+    --background-gray: #888484;
 }
 
 * {
@@ -188,10 +189,22 @@ img {
     width: 100%;
     border-collapse: collapse;
     margin-top: 50px;
-  }
-  .table th,
-  .table td {
+}
+.table th,
+.table td {
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-  }
+}
+
+.table button {
+    color: var(--gray-blue);
+    border: 2px solid var(--gray-blue);
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.table button:hover {
+    border: 2px solid maroon;
+    color: maroon;
+}
