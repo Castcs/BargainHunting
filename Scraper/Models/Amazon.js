@@ -59,12 +59,12 @@ class Amazon {
                 // Iterates through each product...
                 productCards.forEach((productCard) => {
                     try {
-                        const title = productCard.querySelector('.a-size-medium, .a-color-base, .a-text-normal').innerText.toLowerCase();
+                        const title = productCard.querySelector('.a-size-medium, .a-color-base, .a-text-normal').innerText;
                         const price = productCard.querySelector('.a-price-whole').innerText.replace('\n','') + productCard.querySelector('.a-price-fraction').innerText ;
                         const url = productCard.querySelector('.a-link-normal').getAttribute('href');
                         
                         
-                        if(title != null && title != 'Sponsored' && price != null && containsSomeWords(title, searchTerm.split(' ')))
+                        if(title != null && title != 'Sponsored' && price != null && containsSomeWords(title.toLowerCase(), searchTerm.split(' ')))
                         products.push({title, price, url});
                     }
                 

@@ -5,12 +5,14 @@ const Product = require('./Product');
 var amazon = new Amazon();
 var ebay = new Ebay();
 
+const searchTerm = "Macbook Pro 2022";
+
 async function fetchAmazonData() {
-    return await amazon.executeSearch('Macbook Pro 2022');
+    return await amazon.executeSearch(searchTerm);
 }
 
 async function fetchEbayData() {
-    return await ebay.executeSearch('Macbook Pro 2022');
+    return await ebay.executeSearch(searchTerm);
 }
 
 async function fetchData() {
@@ -29,8 +31,6 @@ async function fetchData() {
     } catch (error) {
       console.error('Error:', error);
     }
-
-    return combinedResults;
   }
   
   // Call the main function to fetch data from both eBay and Amazon

@@ -65,12 +65,12 @@ class Ebay {
                 
                 productCards.forEach((productCard) => {
                     try {
-                        const title = productCard.querySelector('.s-item__title').innerText.toLowerCase();
+                        const title = productCard.querySelector('.s-item__title').innerText;
                         const price = productCard.querySelector('.s-item__price').innerText.replace('$','');
                         const url = productCard.querySelector('.s-item__link').getAttribute('href');
                         
                         
-                        if(title != null && title != 'Sponsored' && price != null && containsSomeWords(title, searchTerm.split(' ')))
+                        if(title != null && title != 'Sponsored' && price != null && containsSomeWords(title.toLowerCase(), searchTerm.split(' ')))
                             products.push({title, price, url});
                     }
                 
