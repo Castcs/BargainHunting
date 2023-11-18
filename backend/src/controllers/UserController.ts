@@ -1,15 +1,13 @@
 // src/controllers/UserController.ts
 import { Request, Response } from 'express';
 import UserService from '../services/UserService';
-import {inject, injectable} from "tsyringe";
 import {User} from "../models/User";
 import jwt from 'jsonwebtoken';
 
-@injectable()
 export class UserController {
     private userService: UserService;
-    constructor(@inject('UserService') userService: UserService) {
-        this.userService = userService;
+    constructor() {
+        this.userService = new UserService();
     }
     public async login(req: Request, res: Response): Promise<void> {
         const { username, password } = req.body;
@@ -32,13 +30,6 @@ export class UserController {
         }
     }
 
-    public async logout(req: Request, res: Response): Promise<void> {
-        // Invalidation logic, e.g., by expiring the token
-        // This could be handled by a function like 'signout'
-        //signout(req, res);
-
-        res.status(200).send('Logged out successfully');
-    }
     public async getUserByUsername(req: Request, res: Response): Promise<void> {
         const username = req.params.username;
         const user = await this.userService.getUserByUsername(username);

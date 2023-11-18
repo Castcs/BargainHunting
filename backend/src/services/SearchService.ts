@@ -1,7 +1,6 @@
-import {injectable} from "tsyringe";
 import {SearchHistory} from "../models/SearchHistory";
 
-@injectable()
+
 class SearchService {
     public async performSearch(userID: number, userQuery: string): Promise<SearchHistory> {
         // Insert search functionality here

@@ -1,7 +1,7 @@
 import { User } from '../models/User';
-import { injectable } from 'tsyringe';
 
-@injectable()
+
+
 class UserService {
     // @ts-ignore
     public async getUserByUsername(username: string): Promise<User | null> {
