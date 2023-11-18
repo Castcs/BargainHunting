@@ -6,7 +6,6 @@
           <th>Item</th>
           <th>Store</th>
           <th>Price</th>
-          <th>Remove</th>
           <th>Save</th>
         </tr>
       </thead>
@@ -15,9 +14,6 @@
           <td>{{ component.title }}</td>
           <td>{{ component.store }}</td>
           <td>${{ component.price }}</td>
-          <td>
-            <button id="remove" @click="removeComponent(index)">Remove</button>
-          </td>
           <td>
             <button id="save" @click="saveComponent(index)">Save</button>
           </td>
