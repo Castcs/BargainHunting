@@ -16,6 +16,13 @@ class SearchService {
         }
     }
 
+    public async saveSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<null> {
+        try {
+            await SearchResult.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
+        } catch (error: any) {
+            throw new Error('Failed to create a search entry: ' + error.message);
+        }
+    }
     public async getSearchResultsByUserID(userID: number): Promise<SearchResult[]> {
         try {
             return await SearchResult.getSearchResultsByUserID(userID);
