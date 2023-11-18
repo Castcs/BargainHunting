@@ -1,4 +1,5 @@
 // backend/server.ts
+import "./container";
 import express from 'express';
 import injectorMiddleware from './middleware/injectorMiddleware';
 import appRoutes from "./routes/appRoutes";
