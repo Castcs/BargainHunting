@@ -27,6 +27,7 @@
    height: 30px;
    background-color: var(--gray-blue);
    padding-left: 5px;
+   color: var(--background-gray);
 }
 
 .search-button{
@@ -204,7 +205,12 @@ img {
     background-color: transparent;
 }
 
-.table button:hover {
+.table #remove:hover{
     border: 2px solid maroon;
     color: maroon;
+}
+
+.table #save:hover{
+    border: 2px solid var(--dark-yellow);
+    color: var(--dark-yellow);
 }

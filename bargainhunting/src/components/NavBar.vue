@@ -25,6 +25,7 @@
   </template>
   
   <script>
+
   export default {
     computed: {
     isLoggedIn() {
@@ -41,12 +42,13 @@
     },
     methods: {
         search() {
-      // Implement your search functionality here
-    },
-    signOut() {
-        this.$store.commit('setLoggedIn', false);
-        this.$router.push('/');
-    }
+        // Implement your search functionality here
+        this.$router.push({name: 'SearchResult'});
+        },
+        signOut() {
+            this.$store.commit('setLoggedIn', false);
+            this.$router.push('/');
+        }
   }
 }
   </script>
