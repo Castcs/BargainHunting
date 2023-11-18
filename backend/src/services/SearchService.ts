@@ -16,7 +16,7 @@ class SearchService {
         }
     }
 
-    public async saveSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<null> {
+    public async saveSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<void> {
         try {
             await SearchResult.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
         } catch (error: any) {
