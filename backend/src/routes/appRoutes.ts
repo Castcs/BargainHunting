@@ -14,6 +14,7 @@ router.post('/search', searchController.performSearch);
 router.post('/login', userController.login);
 router.post('/logout', userController.logout)
 router.get('/history', searchController.getSearchResultsByUserID);
+router.post('/saveSearch', searchController.saveResult)
 
 
 export default router;

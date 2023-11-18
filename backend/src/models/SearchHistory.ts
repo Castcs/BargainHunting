@@ -1,7 +1,7 @@
 import {BaseEntity, Column, Entity, PrimaryGeneratedColumn} from 'typeorm';
 
 @Entity()
-export class SearchResult extends BaseEntity{
+export class SearchHistory extends BaseEntity{
     @PrimaryGeneratedColumn()
         // @ts-ignore
     id: number;
@@ -27,14 +27,14 @@ export class SearchResult extends BaseEntity{
     resultPrice: string;
 
     // Add other properties as needed, such as search results
-    static async getSearchResultsByUserID(userID: number): Promise<SearchResult[]> {
-        return await SearchResult.createQueryBuilder("search")
+    static async getSearchResultsByUserID(userID: number): Promise<SearchHistory[]> {
+        return await SearchHistory.createQueryBuilder("search")
             .where("search.userID = :userID", {userID})
             .getMany();
     }
 
-    static async createSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<SearchResult> {
-        const searchEntry = new SearchResult();
+    static async createSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<SearchHistory> {
+        const searchEntry = new SearchHistory();
         searchEntry.userID = userID;
         searchEntry.userQuery = userQuery;
         searchEntry.resultName = resultName;
