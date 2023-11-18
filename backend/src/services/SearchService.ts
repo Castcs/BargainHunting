@@ -1,16 +1,16 @@
 import {injectable} from "tsyringe";
-import {SearchResult} from "../models/SearchResult";
+import {SearchHistory} from "../models/SearchHistory";
 
 @injectable()
 class SearchService {
-    public async createSearchEntry(userID: number, userQuery: string): Promise<SearchResult> {
+    public async performSearch(userID: number, userQuery: string): Promise<SearchHistory> {
         // Insert search functionality here
         const resultName = 'short description of the product';
         const resultURL = 'URL link for the product';
         const resultPrice = 'price : $1.99';
-        // Then pass the pieces of the search result into the following method to store it in the DB and return a SearchResult object
         try {
-            return await SearchResult.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
+            // replace the line below with returning the results from above search
+            return await SearchHistory.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
         } catch (error: any) {
             throw new Error('Failed to create a search entry: ' + error.message);
         }
@@ -18,14 +18,14 @@ class SearchService {
 
     public async saveSearchEntry(userID: number, userQuery: string, resultName: string, resultURL: string, resultPrice: string): Promise<void> {
         try {
-            await SearchResult.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
+            await SearchHistory.createSearchEntry(userID, userQuery, resultName, resultURL, resultPrice);
         } catch (error: any) {
             throw new Error('Failed to create a search entry: ' + error.message);
         }
     }
-    public async getSearchResultsByUserID(userID: number): Promise<SearchResult[]> {
+    public async getSearchResultsByUserID(userID: number): Promise<SearchHistory[]> {
         try {
-            return await SearchResult.getSearchResultsByUserID(userID);
+            return await SearchHistory.getSearchResultsByUserID(userID);
         } catch (error: any) {
             throw new Error('Failed to get search results: ' + error.message);
         }
