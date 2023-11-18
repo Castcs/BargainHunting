@@ -5,6 +5,8 @@
         <input type="text" placeholder="Enter Email" />
         <input type="password" placeholder="Enter Password" />
         <button v-on:click="toggleLogin">Sign Up</button>
+        <button v-on:click="registerUser">Sign Up</button>
+
         <p>
             <router-link to="/log-in">Log In</router-link>
         </p>
@@ -33,7 +35,7 @@ export default {
       },
 
       registerUser() {
-        axios.post('/api/register', {
+        axios.post('/register', {
           username: 'user123', // Replace with the actual username entered by the user
           password: 'password123', // Replace with the actual password entered by the user
         })
