@@ -80,7 +80,6 @@ app.post('/login', async (req, res) => {
 
 app.post('/fetchHistory', async (req, res) => {
   const { email }  = req.body; // Use req.body to get parameters from the request body
-  // console.log("Email: " + email);
 
   try {
     // Find the user by email
@@ -92,7 +91,6 @@ app.post('/fetchHistory', async (req, res) => {
 
     // Find search histories based on the UserId
     const results = await SearchHistory.findAll({ where: { userId: user.id } });
-    // console.log(results);
 
     // Send the results as JSON in the response
     res.json(results);
@@ -124,9 +122,6 @@ app.post('/executeSearch', async (req, res) => {
 
 app.post('/saveResult', async (req, res) => {
   const { email, saved, query }  = req.body; // Use req.body to get parameters from the request body
-  // console.log("Email: " + email);
-  // console.log("Result: " + saved);
-  // console.log("Query: " + query);
 
   try {
     // Find the user by email
@@ -149,6 +144,27 @@ app.post('/saveResult', async (req, res) => {
 
     // Send an error response if something goes wrong
     res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+app.post('/removeItem', async(req, res) => {
+  const { email, item } = req.body;
+
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user) {
+      return res.status(404).json( { erro: 'User not found' });
+    }
+
+    const searchHistory = await SearchHistory.destroy({
+      where: { userId: user.id, resultName: item.resultName, resultURL: item.resultURL, resultPrice: item.resultPrice }
+    });
+
+    res.status(200).json({ message: 'Item removed successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

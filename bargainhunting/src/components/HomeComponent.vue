@@ -29,47 +29,58 @@
 <script>
 import axios from 'axios';
 
-// Assuming SearchResult.vue is not being used for this component anymore.
-// If it is, you can leave the import and components registration in place.
-// import axios from "@/services/axios";
-
 export default {
   name: 'HomeComponent',
-   data() {
-    return {
-      results: [],
-    };
-  },
-  mounted() {
-    // console.log(this.$store.state.email);
-    this.fetchData();
-    this.$store.commit('setSearchQuery', '');
-  },
-  methods: {
-    removeComponent(index) {
-      this.results.splice(index, 1);
+    data() {
+      return {
+        results: [],
+        email: this.$store.state.email,
+      };
     },
 
-    truncatedURL(url) {
-        const maxLength = 20;
-        return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
-      },
+    mounted() {
+      this.fetchData();
+      this.$store.commit('setSearchQuery', '');
+    },
 
-    fetchData() {
-      const email = this.$store.state.email;
-
-      axios.post('http://localhost:3000/fetchHistory', {
-        email: email,
-      })
+    methods: {
+      removeComponent(index) {
+        //Removes the item from the database
+        console.log("Item: " + this.results[index].resultName)
+        axios.post('http://localhost:3000/removeItem', {
+          email: this.email,
+          item: this.results[index],
+        })
         .then(response => {
           console.log(response.data);
-          this.results = response.data;
         })
         .catch(error => {
-          console.error('Error fetching data from backend:', error);
+          console.error('Error deleting item from database:', error);
         })
+
+
+        //Removes the item visually from the front end.
+        this.results.splice(index, 1);
+      },
+
+      truncatedURL(url) {
+          const maxLength = 20;
+          return url.length > maxLength ? url.substring(0, maxLength) + '...' : url;
+        },
+
+      fetchData() {
+        axios.post('http://localhost:3000/fetchHistory', {
+          email: this.email,
+        })
+          .then(response => {
+            console.log(response.data);
+            this.results = response.data;
+          })
+          .catch(error => {
+            console.error('Error fetching data from backend:', error);
+          })
+      },
     },
-  },
 };
 </script>
 

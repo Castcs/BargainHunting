@@ -25,7 +25,6 @@
   </template>
   
   <script>
-  // import axios from "@/services/axios";
 
   export default {
     computed: {
