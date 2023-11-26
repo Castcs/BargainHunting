@@ -48,19 +48,8 @@
           if (this.searchQuery != '') {
             this.$store.commit('setSearchQuery', this.searchQuery);
             this.$router.push({name: 'SearchResults'});
+            this.searchQuery = '';
           }
-          // axios.post('http://localhost:3000/executeSearch', {
-          //   searchQuery: this.searchQuery,
-          // }, {
-          //   timeout: 20000, // Set timeout length
-          // })
-          //   .then(response => {
-          //     console.log(response.data);
-          //   })
-          //   .catch((error) => {
-          //     console.error(error);
-          //     // Handle registration errors, such as duplicate usernames
-          //   });
         },
       signOut() {
           this.$store.commit('setLoggedIn', false);
