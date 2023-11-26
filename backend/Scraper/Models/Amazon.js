@@ -26,9 +26,19 @@ class Amazon {
         
         if (searchInputSelector) {
             // Types the search query into the search bar
-            await searchInputSelector[0].type(searchTerm.toLowerCase());
-            //clicks the "Go" button to initiate search on page.
-            await searchButtonSelector[0].click();
+            let attempts = 0;
+            while(attempts < 6) {
+                try {
+                    await searchInputSelector[0].type(searchTerm.toLowerCase());
+                    //clicks the "Go" button to initiate search on page.
+                    await searchButtonSelector[0].click();
+                    break;
+                }
+                catch {
+                    console.log("Attempt Failed");
+                    attempts = attempts + 1;
+                }
+            }
         }
         
         // waits for the page to load
