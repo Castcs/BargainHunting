@@ -25,30 +25,37 @@
   </template>
   
   <script>
+
   export default {
     computed: {
-    isLoggedIn() {
-      return this.$store.state.isLoggedIn;
+      isLoggedIn() {
+        return this.$store.state.isLoggedIn;
+      },
+      notIsLoggedIn() {
+          return !this.$store.state.isLoggedIn;
+      }
     },
-    notIsLoggedIn() {
-        return !this.$store.state.isLoggedIn;
-    }
-    },
+
     data() {
         return {
         searchQuery: '', // Store the search query
         };
     },
+
     methods: {
         search() {
-      // Implement your search functionality here
-    },
-    signOut() {
-        this.$store.commit('setLoggedIn', false);
-        this.$router.push('/');
+          if (this.searchQuery != '') {
+            this.$store.commit('setSearchQuery', this.searchQuery);
+            this.$router.push({name: 'SearchResults'});
+            this.searchQuery = '';
+          }
+        },
+      signOut() {
+          this.$store.commit('setLoggedIn', false);
+          this.$router.push('/');
+      }
     }
   }
-}
   </script>
   
 
