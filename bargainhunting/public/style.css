@@ -37,7 +37,9 @@
    height: 30px;
    background-color: var(--gray-blue);
    padding-left: 5px;
+   color: white;
 }
+
 
 .search-button{
     height: 30px;
