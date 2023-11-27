@@ -14,7 +14,6 @@
 
 <script>
 import axios from "@/services/axios";
-
 export default {
     name: 'LoginPage',
 
@@ -30,21 +29,19 @@ export default {
         axios.post('http://localhost:3000/login', {
         email: this.email,
         password: this.password,
-        }).then(() => {
-            // console.log(response);
+        }).then(response => {
+            const token = response.data;
             if(!this.$store.isLoggedIn) {
+                this.$store.commit('setJwt', token);
                 this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
                 this.$store.commit('setEmail', this.email);
                 this.$router.push({name: 'HomeComponent'});
             }
-
             else {
               this.$router.push({name: 'LoginPage'});
             }
-            // Handle successful registration
           }).catch((error) => {
               console.error(error.response.data.error);
-              // Handle registration errors, such as duplicate usernames
             });
       },
     },
