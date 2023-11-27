@@ -3,9 +3,25 @@
     <h1>Sign Up</h1>
     <div class="register">
       <form @submit.prevent="registerUser" class="register-form">
-        <input v-model="name" type="text" placeholder="Enter Name" />
-        <input v-model="email" type="text" placeholder="Enter Email" />
-        <input v-model="password" type="password" placeholder="Enter Password" />
+        <input
+          v-model="name"
+          type="text"
+          placeholder="Enter Name" 
+          :class="{ 'input-error': !isValidName }"
+          />
+        <input
+          v-model="email"
+          type="text"
+          placeholder="Enter Email" 
+          :class="{ 'input-error': !isValidEmail }"
+          />
+        <input
+          v-model="password"
+          type="password"
+          placeholder="Enter Password" 
+          :class="{ 'input-error': !isValidPassword }"
+          />
+          <div v-if="badResponse" class="error-message">Invalid Information</div>
         <button type="submit">Sign Up</button>
       </form>
     </div>
@@ -25,10 +41,35 @@ export default {
       name: '',
       email: '',
       password: '',
+      isValidName: true,
+      isValidEmail: true,
+      isValidPassword: true,
+      badResponse: false,
     };
   },
   methods: {
     registerUser() {
+      this.isValidName = true;
+      this.isValidEmail = true;
+      this.isValidPassword = true;
+
+      if(!this.name) {
+        this.isValidName = false;
+      }
+      // Validate email
+      if (!this.email) {
+        this.isValidEmail = false;
+      }
+
+      //Validate Password
+      if (!this.password) {
+        this.isValidPassword = false;
+      }
+
+      // If validation fails, return early
+      if (!this.isValidEmail || !this.isValidPassword || !this.isValidName) {
+        return;
+      }
       // console.log("RegisterUser called:");
       axios.post('http://localhost:3000/newUser', {
         username: this.name,
@@ -50,6 +91,7 @@ export default {
       })
       .catch((error) => {
         console.error(error.response.data.error);
+        this.badResponse = true;
         // Handle registration errors, such as duplicate usernames
       });
     },

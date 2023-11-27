@@ -14,6 +14,16 @@
     font-family: 'Monaco', monospace;
 }
 
+.input-error {
+    background-color: lightcoral;
+}
+
+.error-message {
+    color: lightcoral;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
 .search-bar {
     display: flex;
     align-items: center;

@@ -25,7 +25,7 @@ const sequelize = new Sequelize('BargainHunting', 'postgres', 'admin', {
 const User = require(modelPaths.user)(sequelize, DataTypes);
 const SearchHistory = require(modelPaths.history)(sequelize, DataTypes);
 
-// Sync the model with the database
+// Sync the models with the database
 sequelize.sync()
   .then(() => {
     console.log('Database and tables synced');
