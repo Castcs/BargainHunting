@@ -30,10 +30,6 @@
   <script>
   import axios from 'axios';
   
-  // Assuming SearchResult.vue is not being used for this component anymore.
-  // If it is, you can leave the import and components registration in place.
-  // import axios from "@/services/axios";
-  
   export default {
     name: 'SearchResults',
      data() {
@@ -42,10 +38,11 @@
         saved: [],
       };
     },
+    
     mounted() {
-      // console.log(this.$store.state.email);
       this.fetchSearchResults();
     },
+
     methods: {
       saveResult(index) {
         const email = this.$store.state.email;

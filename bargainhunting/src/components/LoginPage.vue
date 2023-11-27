@@ -90,16 +90,3 @@ export default {
   },
 };
 </script>
-
-
-<style>
-/* .input-error {
-  background-color: lightcoral;
-} */
-
-.error-message {
-  color: lightcoral;
-  /* margin-top: 5px; */
-}
-</style>
-

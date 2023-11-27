@@ -55,6 +55,7 @@ export default {
       this.isValidPassword = true;
       this.badResponse = false;
 
+      // Validate name
       if(!this.name) {
         this.isValidName = false;
       }
@@ -72,14 +73,13 @@ export default {
       if (!this.isValidEmail || !this.isValidPassword || !this.isValidName) {
         return;
       }
-      // console.log("RegisterUser called:");
+      
       axios.post('http://localhost:3000/newUser', {
         username: this.name,
         email: this.email,
         password: this.password,
       })
       .then(() => {
-        // console.log(response);
         if(!this.$store.isLoggedIn) {
             this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
             this.$store.commit('setEmail', this.email);

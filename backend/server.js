@@ -110,7 +110,6 @@ app.post('/executeSearch', async (req, res) => {
   try {
     // Find the user by email
     const searchResults = await fetchData(searchQuery);
-    // console.log(searchResults);
     res.json(searchResults);
     
   } catch (error) {
@@ -135,7 +134,6 @@ app.post('/saveResult', async (req, res) => {
     // Find search histories based on the UserId
     const newSave = await SearchHistory.create(
       { userId: user.id, userQuery: query, resultName: saved[0], resultURL: saved[1], resultPrice: saved[2] });
-    // console.log(results);
 
     // Send the results as JSON in the response
     res.json(newSave);
