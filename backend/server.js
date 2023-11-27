@@ -5,7 +5,8 @@ const modelPaths = require('./config/ModelPaths');
 const cors = require('cors');
 const bcrypt = require('bcrypt');
 const { fetchData } = require('./Scraper/Models/ScraperFunction');
-
+const jwt = require('jsonwebtoken');
+const secretKey = 'secret-token-key';
 const app = express();
 const port = 3000;
 app.use(cors());
@@ -68,9 +69,9 @@ app.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid password' });
     }
 
-    // User is authenticated, you can generate and send a token here if using JWT
-
-    res.json({ message: 'Login successful', user: user });
+    // User is authenticated, assign them a token for their session
+    const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1d' });
+    res.json({ message: 'Login successful', token });
 
   } catch (error) {
     console.error('Error during login:', error);
