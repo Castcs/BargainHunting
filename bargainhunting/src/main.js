@@ -9,6 +9,7 @@ createApp(App)
     .mount('#app')
 
 const storedToken = localStorage.getItem('jwt')
+
 if (storedToken) {
     this.$store.commit('setToken', storedToken);
 }
