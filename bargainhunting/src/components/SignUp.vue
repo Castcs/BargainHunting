@@ -79,7 +79,12 @@ export default {
         email: this.email,
         password: this.password,
       })
-      .then(() => {
+      .then((response) => {
+        // Token created from response data, contains userID from database.
+        const token = response.data.token;
+          // Token stored in localStorage
+        localStorage.setItem('token', token);
+
         if(!this.$store.isLoggedIn) {
             this.$store.commit('setLoggedIn', !this.$store.state.isLoggedIn);
             this.$store.commit('setEmail', this.email);

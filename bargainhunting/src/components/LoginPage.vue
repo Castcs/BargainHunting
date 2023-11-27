@@ -69,9 +69,13 @@ export default {
           password: this.password,
         })
         .then((response) => {
-          const token = response.data;
+          // Token created from response data, contains userID from database.
+          const token = response.data.token;
+          // Token stored in localStorage
+          localStorage.setItem('token', token);
+          
           if (!this.$store.isLoggedIn) {
-            this.$store.commit("setJwt", token);
+            // this.$store.commit("setJwt", token);
             this.$store.commit(
               "setLoggedIn",
               !this.$store.state.isLoggedIn

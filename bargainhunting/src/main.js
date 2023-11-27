@@ -8,8 +8,8 @@ createApp(App)
     .use(router)
     .mount('#app')
 
-const storedToken = localStorage.getItem('jwt')
+// const storedToken = localStorage.getItem('token')
 
-if (storedToken) {
-    this.$store.commit('setToken', storedToken);
-}
+// if (storedToken) {
+//     this.$store.commit('setLoggedIn', true);
+// }

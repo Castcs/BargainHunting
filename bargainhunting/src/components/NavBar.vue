@@ -47,6 +47,16 @@
       };
     },
 
+    created() {
+      const storedToken = localStorage.getItem('token');
+      if (storedToken) {
+        this.$store.commit('setLoggedIn', true);
+      }
+      else {
+        this.$store.commit('setLoggedIn', false);
+      }
+    },
+
     methods: {
       search() {
         if (this.searchQuery != '') {
@@ -59,6 +69,10 @@
       signOut() {
           this.$store.commit('setLoggedIn', false);
           this.$router.push('/');
+
+          // Destroys to token in localStorage on logout.
+          localStorage.removeItem('token');
+          // console.log("User Token on Logout: " + localStorage.getItem('token'));
       },      
     }
   }

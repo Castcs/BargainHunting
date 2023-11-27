@@ -36,6 +36,7 @@
       return {
         results: [],
         saved: [],
+        storedToken: localStorage.getItem('token'),
       };
     },
     
@@ -45,13 +46,15 @@
 
     methods: {
       saveResult(index) {
-        const email = this.$store.state.email;
         const query = this.$store.state.searchQuery;
 
         axios.post('http://localhost:3000/saveResult', {
-          email: email,
           saved: [this.results[index].title, this.results[index].url, this.results[index].price],
           query: query,
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.storedToken}`,
+          }
         })
           .then(() => {
             this.$router.push({name: 'HomeComponent'});
@@ -73,7 +76,7 @@
           searchQuery: searchQuery,
         })
           .then(response => {
-            console.log(response.data);
+            // console.log(response.data);
             this.results = response.data;
           })
           .catch(error => {
