@@ -71,7 +71,7 @@ app.post('/login', async (req, res) => {
 
     // User is authenticated, assign them a token for their session
     const token = jwt.sign({ id: user.id }, secretKey, { expiresIn: '1d' });
-    res.json({ message: 'Login successful', token });
+    res.json({ token });
 
   } catch (error) {
     console.error('Error during login:', error);
