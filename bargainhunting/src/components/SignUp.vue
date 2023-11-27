@@ -49,9 +49,11 @@ export default {
   },
   methods: {
     registerUser() {
+      //Resets all validation booleans
       this.isValidName = true;
       this.isValidEmail = true;
       this.isValidPassword = true;
+      this.badResponse = false;
 
       if(!this.name) {
         this.isValidName = false;

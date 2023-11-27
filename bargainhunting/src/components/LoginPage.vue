@@ -46,6 +46,7 @@ export default {
       // Reset validation status
       this.isValidEmail = true;
       this.isValidPassword = true;
+      this.badResponse = false;
 
       // Validate email and password
       if (!this.email) {
