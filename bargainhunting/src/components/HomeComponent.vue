@@ -34,7 +34,8 @@ export default {
     data() {
       return {
         results: [],
-        email: this.$store.state.email,
+        // email: this.$store.state.email,
+        storedToken: localStorage.getItem('token'),
       };
     },
 
@@ -46,21 +47,23 @@ export default {
     methods: {
       removeComponent(index) {
         //Removes the item from the database
-        console.log("Item: " + this.results[index].resultName)
         axios.post('http://localhost:3000/removeItem', {
-          email: this.email,
+          // email: this.email,
           item: this.results[index],
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.storedToken}`,
+
+          },
         })
         .then(response => {
           console.log(response.data);
+          //Removes the item visually from the front end.
+          this.results.splice(index, 1);
         })
         .catch(error => {
           console.error('Error deleting item from database:', error);
         })
-
-
-        //Removes the item visually from the front end.
-        this.results.splice(index, 1);
       },
 
       truncatedURL(url) {
@@ -71,6 +74,10 @@ export default {
       fetchData() {
         axios.post('http://localhost:3000/fetchHistory', {
           email: this.email,
+        }, {
+          headers: {
+            Authorization: `Bearer ${this.storedToken}`,
+          }
         })
           .then(response => {
             console.log(response.data);

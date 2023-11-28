@@ -9,7 +9,27 @@ const jwt = require('jsonwebtoken');
 const secretKey = 'secret-token-key';
 const app = express();
 const port = 3000;
+
+const authenticateToken = (req, res, next) => {
+  const token = req.header('Authorization') && req.header('Authorization').split(' ')[1];
+
+  if (!token) {
+    return res.status(401).json({ error: 'Unauthorized - No token provided' });
+  }
+
+  jwt.verify(token, secretKey, (err, user) => {
+    if (err) {
+      return res.status(403).json({ error: 'Unauthorized - Invalid token' });
+    }
+    req.user = user;
+    next();
+  });
+};
+
 app.use(cors());
+app.use('/fetchHistory', authenticateToken);
+app.use('/saveResult', authenticateToken);
+app.use('/removeItem', authenticateToken);
 
 // Set up body-parser middleware
 app.use(bodyParser.json());
@@ -19,13 +39,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 const sequelize = new Sequelize('BargainHunting', 'postgres', 'admin', {
   host: 'localhost',
   dialect: 'postgres',
+  logging: false, // To see executed SQL statements in backend console, set to true.
 });
 
 // Import the User model from the models folder
 const User = require(modelPaths.user)(sequelize, DataTypes);
 const SearchHistory = require(modelPaths.history)(sequelize, DataTypes);
 
-// Sync the model with the database
+// Sync the models with the database
 sequelize.sync()
   .then(() => {
     console.log('Database and tables synced');
@@ -43,7 +64,9 @@ app.post('/newUser', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const newUser = await User.create({ username, email, password: hashedPassword });
-    res.json(newUser);
+
+    const token = jwt.sign({ id: newUser.id }, secretKey, { expiresIn: '1d' });
+    res.json(token);
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -79,19 +102,21 @@ app.post('/login', async (req, res) => {
   }
 });
 
+
 app.post('/fetchHistory', async (req, res) => {
-  const { email }  = req.body; // Use req.body to get parameters from the request body
-
   try {
-    // Find the user by email
-    const user = await User.findOne({ where: { email } });
+    // Gets the userID from the token sent from the front end.
+    const userToken = req.user.id;
 
-    if (!user) {
+    // console.log("UserToken (fetchHistory): " +  userToken);
+    // const user = await User.findOne({ where: { Id: userToken } });
+
+    if (!userToken) {
       return res.status(404).json({ error: 'User not found' });
     }
 
     // Find search histories based on the UserId
-    const results = await SearchHistory.findAll({ where: { userId: user.id } });
+    const results = await SearchHistory.findAll({ where: { userId: userToken } });
 
     // Send the results as JSON in the response
     res.json(results);
@@ -105,12 +130,9 @@ app.post('/fetchHistory', async (req, res) => {
 
 app.post('/executeSearch', async (req, res) => {
   const { searchQuery }  = req.body; // Use req.body to get parameters from the request body
-  console.log("Search Query " + searchQuery);
 
   try {
-    // Find the user by email
     const searchResults = await fetchData(searchQuery);
-    // console.log(searchResults);
     res.json(searchResults);
     
   } catch (error) {
@@ -122,20 +144,18 @@ app.post('/executeSearch', async (req, res) => {
 });
 
 app.post('/saveResult', async (req, res) => {
-  const { email, saved, query }  = req.body; // Use req.body to get parameters from the request body
+  const { saved, query }  = req.body; // Use req.body to get parameters from the request body
 
   try {
-    // Find the user by email
-    const user = await User.findOne({ where: { email } });
+    const userToken = req.user.id;
 
-    if (!user) {
+    if (!userToken) {
       return res.status(404).json({ error: 'User not found' });
     }
 
-    // Find search histories based on the UserId
+    // Find search histories based on the UserId from token
     const newSave = await SearchHistory.create(
-      { userId: user.id, userQuery: query, resultName: saved[0], resultURL: saved[1], resultPrice: saved[2] });
-    // console.log(results);
+      { userId: userToken, userQuery: query, resultName: saved[0], resultURL: saved[1], resultPrice: saved[2] });
 
     // Send the results as JSON in the response
     res.json(newSave);
@@ -149,17 +169,20 @@ app.post('/saveResult', async (req, res) => {
 });
 
 app.post('/removeItem', async(req, res) => {
-  const { email, item } = req.body;
+  const { item } = req.body;
 
   try {
-    const user = await User.findOne({ where: { email } });
+    // const user = await User.findOne({ where: { email } });
+    const userToken = req.user.id;
+    // console.log("UserToken (removeItem): " +  userToken);
 
-    if (!user) {
+    if (!userToken) {
       return res.status(404).json( { erro: 'User not found' });
     }
 
+    // Removes the selected item from the database.
     const searchHistory = await SearchHistory.destroy({
-      where: { userId: user.id, resultName: item.resultName, resultURL: item.resultURL, resultPrice: item.resultPrice }
+      where: { userId: userToken, resultName: item.resultName, resultURL: item.resultURL, resultPrice: item.resultPrice }
     });
 
     res.status(200).json({ message: 'Item removed successfully' });
