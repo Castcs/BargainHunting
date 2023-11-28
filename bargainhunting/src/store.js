@@ -5,7 +5,6 @@ export default createStore({
     isLoggedIn: false,
     email: "",
     searchQuery: "",
-    // jwt: null,
     // Add other state properties as needed
   },
   mutations: {
@@ -18,10 +17,6 @@ export default createStore({
     setSearchQuery(state, value) {
       state.searchQuery = value;
     },
-    // setJwt(state, token) {
-    //   state.jwt = token;
-    //   localStorage.setItem('jwt', token);
-    // }
     // Add other mutations as needed
   },
   actions: {

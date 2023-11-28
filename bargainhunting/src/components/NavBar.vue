@@ -14,8 +14,7 @@
   
       <div 
         class="search-bar"
-        v-if="isLoggedIn"
-        >
+        v-if="isLoggedIn" >
         <input
           v-model="searchQuery"
           type="text"
@@ -49,12 +48,15 @@
 
     created() {
       const storedToken = localStorage.getItem('token');
+      
       if (storedToken) {
         this.$store.commit('setLoggedIn', true);
       }
       else {
         this.$store.commit('setLoggedIn', false);
       }
+
+      this.searchQuery = this.$store.state.searchQuery
     },
 
     methods: {
@@ -70,9 +72,8 @@
           this.$store.commit('setLoggedIn', false);
           this.$router.push('/');
 
-          // Destroys to token in localStorage on logout.
+          // Destroys the token in localStorage on logout.
           localStorage.removeItem('token');
-          // console.log("User Token on Logout: " + localStorage.getItem('token'));
       },      
     }
   }

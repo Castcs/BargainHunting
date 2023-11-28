@@ -34,14 +34,12 @@ export default {
     data() {
       return {
         results: [],
-        // email: this.$store.state.email,
         storedToken: localStorage.getItem('token'),
       };
     },
 
     mounted() {
       this.fetchData();
-      this.$store.commit('setSearchQuery', '');
     },
 
     methods: {
@@ -53,7 +51,6 @@ export default {
         }, {
           headers: {
             Authorization: `Bearer ${this.storedToken}`,
-
           },
         })
         .then(response => {

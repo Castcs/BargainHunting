@@ -75,11 +75,7 @@ export default {
           localStorage.setItem('token', token);
           
           if (!this.$store.isLoggedIn) {
-            // this.$store.commit("setJwt", token);
-            this.$store.commit(
-              "setLoggedIn",
-              !this.$store.state.isLoggedIn
-            );
+            this.$store.commit("setLoggedIn", !this.$store.state.isLoggedIn);
             this.$store.commit("setEmail", this.email);
             this.$router.push({ name: "HomeComponent" });
           } else {
