@@ -66,7 +66,7 @@ app.post('/newUser', async (req, res) => {
     const newUser = await User.create({ username, email, password: hashedPassword });
 
     const token = jwt.sign({ id: newUser.id }, secretKey, { expiresIn: '1d' });
-    res.json(token);
+    res.json({ token });
   } catch (error) {
     console.error('Error creating user:', error);
     res.status(500).json({ error: 'Internal Server Error' });
@@ -107,10 +107,7 @@ app.post('/fetchHistory', async (req, res) => {
   try {
     // Gets the userID from the token sent from the front end.
     const userToken = req.user.id;
-
-    // console.log("UserToken (fetchHistory): " +  userToken);
-    // const user = await User.findOne({ where: { Id: userToken } });
-
+    
     if (!userToken) {
       return res.status(404).json({ error: 'User not found' });
     }
@@ -172,9 +169,7 @@ app.post('/removeItem', async(req, res) => {
   const { item } = req.body;
 
   try {
-    // const user = await User.findOne({ where: { email } });
     const userToken = req.user.id;
-    // console.log("UserToken (removeItem): " +  userToken);
 
     if (!userToken) {
       return res.status(404).json( { erro: 'User not found' });

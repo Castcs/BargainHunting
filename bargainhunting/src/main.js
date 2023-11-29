@@ -7,9 +7,3 @@ createApp(App)
     .use(store)
     .use(router)
     .mount('#app')
-
-// const storedToken = localStorage.getItem('token')
-
-// if (storedToken) {
-//     this.$store.commit('setLoggedIn', true);
-// }

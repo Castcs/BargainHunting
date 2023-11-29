@@ -9,6 +9,11 @@
             <th>Actions</th>
           </tr>
         </thead>
+
+        <div v-if="isLoading" class="loading-indicator">
+          Loading...
+        </div>
+
         <tbody>
           <tr v-for="(result, index) in results" :key="index">
             <td style="width: 50%;">{{ result.title }}</td>
@@ -32,11 +37,13 @@
   
   export default {
     name: 'SearchResults',
-     data() {
+
+    data() {
       return {
         results: [],
         saved: [],
         storedToken: localStorage.getItem('token'),
+        isLoading: false,
       };
     },
     
@@ -58,6 +65,7 @@
         })
           .then(() => {
             this.$router.push({name: 'HomeComponent'});
+            this.$store.commit('setSearchQuery', "");
           })
           .catch(error => {
             console.error('Error fetching data from backend:', error);
@@ -70,20 +78,22 @@
       },
   
       fetchSearchResults() {
+        this.isLoading = true;
         const searchQuery = this.$store.state.searchQuery;
   
         axios.post('http://localhost:3000/executeSearch', {
           searchQuery: searchQuery,
         })
           .then(response => {
-            // console.log(response.data);
             this.results = response.data;
           })
           .catch(error => {
             console.error('Error fetching data from backend:', error);
           })
+          .finally(() => {
+            this.isLoading = false;
+          })
       },
     },
   };
   </script>
-
